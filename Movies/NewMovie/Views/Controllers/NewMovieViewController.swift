@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NewMovieViewController.swift
 //  Movies
 //
 //  Created by mac on 6/12/19.
@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NewMovieViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
 
-}
 
+}

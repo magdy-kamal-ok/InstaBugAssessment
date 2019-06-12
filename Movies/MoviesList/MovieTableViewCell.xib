@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="481" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="Movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="481"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="480.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_movie_iphone_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="6ew-t9-e29" customClass="CustomImageView" customModule="Movies" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="80" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="aV0-QH-KfT"/>
+                            <constraint firstAttribute="width" constant="80" id="h7I-pH-X2b"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zqo-j4-9WQ">
+                        <rect key="frame" x="112" y="16" width="192" height="120"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Phoenix" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Skt-DT-oby" userLabel="titleLbl">
+                                <rect key="frame" x="0.0" y="0.0" width="89.5" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/01/2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q1-fg-L0o" userLabel="dateLbl">
+                                <rect key="frame" x="0.0" y="68" width="71" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjd-V6-bpO" userLabel="overViewLbl">
+                        <rect key="frame" x="16" y="152" width="288" height="312.5"/>
+                        <string key="text">The X-Men face their most formidable and powerful foe when one of their own, Jean Grey, starts to spiral out of control. During a rescue mission in outer space, Jean is nearly killed when she's hit by a mysterious cosmic force. Once she returns home, this force not only makes her infinitely more powerful, but far more unstable. The X-Men must now band together to save her soul and battle aliens that want to use Grey's new abilities to rule the galaxy.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="mjd-V6-bpO" secondAttribute="bottom" constant="16" id="AED-74-MGX"/>
+                    <constraint firstItem="zqo-j4-9WQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="BDK-lm-4L1"/>
+                    <constraint firstAttribute="trailing" secondItem="mjd-V6-bpO" secondAttribute="trailing" constant="16" id="Ol3-hJ-Ixz"/>
+                    <constraint firstItem="6ew-t9-e29" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="SEm-WY-91e"/>
+                    <constraint firstAttribute="trailing" secondItem="zqo-j4-9WQ" secondAttribute="trailing" constant="16" id="bAe-yK-9k1"/>
+                    <constraint firstItem="6ew-t9-e29" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bVr-Wd-Cao"/>
+                    <constraint firstItem="zqo-j4-9WQ" firstAttribute="leading" secondItem="6ew-t9-e29" secondAttribute="trailing" constant="16" id="eyZ-gv-27L"/>
+                    <constraint firstItem="zqo-j4-9WQ" firstAttribute="centerY" secondItem="6ew-t9-e29" secondAttribute="centerY" id="hNP-st-hPR"/>
+                    <constraint firstItem="mjd-V6-bpO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oJm-Tq-7Ys"/>
+                    <constraint firstItem="mjd-V6-bpO" firstAttribute="top" secondItem="6ew-t9-e29" secondAttribute="bottom" constant="16" id="pV2-Nf-ANg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLbl" destination="9q1-fg-L0o" id="fTc-WR-DpH"/>
+                <outlet property="overViewLbl" destination="mjd-V6-bpO" id="9dx-TP-uSg"/>
+                <outlet property="posterImageView" destination="6ew-t9-e29" id="xgP-Kc-tYX"/>
+                <outlet property="titleLbl" destination="Skt-DT-oby" id="zEb-ZP-3AZ"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="351.27436281859076"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_movie_iphone_placeholder" width="147" height="130"/>
+    </resources>
+</document>
