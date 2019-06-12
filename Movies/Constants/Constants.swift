@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class Constants: NSObject {
+    
+    private static let BaseUrl = "https://api.themoviedb.org/"
+    public static let BaseImageUrl = "https://image.tmdb.org/t/p/w500"
+}

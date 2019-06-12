@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        openViewController()
         return true
     }
 
@@ -44,3 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate
+{
+    func openViewController()
+    {
+        let moviesListViewController  = MoviesListViewController(nibName: "MoviesListViewController", bundle: nil)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationBar = UINavigationController.init(rootViewController: moviesListViewController)
+        self.window?.rootViewController = navigationBar
+        window?.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
+        
+        
+    }
+}
