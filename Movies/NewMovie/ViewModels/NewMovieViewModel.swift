@@ -31,7 +31,8 @@ class NewMovieViewModel: NSObject {
     {
         
         let date = self.selectedDate?.description ?? Date().description
-        let movie = Movie.init(title: movieTitle, overview: movieOverView, releaseDate: date, image: self.selectedImage)
+        let dateStr = HelperDateFormatter.formatDate(dateString: date)
+        let movie = Movie.init(title: movieTitle, overview: movieOverView, releaseDate: dateStr, image: self.selectedImage ?? UIImage.init(named: "ic_movie_iphone_placeholder")!)
         myMoviesArray.add(movie)
     }
 }

@@ -41,7 +41,7 @@ class MovieTableViewCell: UITableViewCell {
     {
         setCellData(movie: movie)
         let url = Constants.BaseImageUrl + movie.posterPath
-        self.posterImageView.loadImageUsingUrlString(urlString: url)
+        self.posterImageView.loadImageUsingUrlString(urlString: url, placeHolderImage: UIImage.init(named: "ic_movie_iphone_placeholder"))
         
     }
     

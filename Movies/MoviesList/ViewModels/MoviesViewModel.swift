@@ -7,6 +7,10 @@
 //
 import Foundation
 
+enum MoviesSection:String {
+    case myMovies = "My Movies"
+    case allMovies = "All Movies"
+}
 
 protocol MovieViewControllerDelegate: NSObjectProtocol {
     
@@ -24,12 +28,12 @@ class MoviesViewModel: NSObject {
     //
     lazy private var backendManager = MoviesBackendManager()
     private var currentOffset: Int = 1
-    public private(set) var listTotalCount: Int = 60
+    public private(set) var listTotalCount: Int = 0
     public private(set) var allMoviesArray: NSMutableArray = []
     public private(set) var isLoadingMore: Bool = false
     private var isSwipeAndRefresh : Bool = false
     weak var movieViewControllerDelegate:MovieViewControllerDelegate?
-    
+    public private(set) var moviesSections = [MoviesSection]()
     //
     // MARK: Initializer
     //
@@ -58,11 +62,16 @@ class MoviesViewModel: NSObject {
     
     public func getSectionsCount()->Int
     {
+        self.moviesSections.removeAll()
         if myMoviesArray.count > 0
         {
-            return 2
+            self.moviesSections.append(MoviesSection.myMovies)
         }
-        return 1
+        if self.allMoviesArray.count > 0
+        {
+            self.moviesSections.append(MoviesSection.allMovies)
+        }
+        return self.moviesSections.count
     }
     
     public func refreshMoviesList()
@@ -109,7 +118,7 @@ extension MoviesViewModel:MovieRequestDelegate
         }
         if let moviesResponse = data
         {
-            //self.listTotalCount = moviesResponse.numberOfResults
+            self.listTotalCount = moviesResponse.numberOfResults
             
             self.allMoviesArray.addObjects(from: moviesResponse.movies)
         }

@@ -8,10 +8,6 @@
 
 import Foundation
 
-public typealias HTTPHeaders = [String: Any]
-public enum HTTPMethod : String {
-    case get = "GET"
-}
 public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     
     let defaultSession = URLSession(configuration: .default)
@@ -29,61 +25,97 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
             guard let url = urlComponents.url else { return }
             dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
                 defer { self?.dataTask = nil }
-                if let error = error {
+                if let error = error,  let response = response as? HTTPURLResponse
+                {
                     if !(self?.isForcingCancel)!
                     {
-                        
+                        self?.setErrorResponse(message: error.localizedDescription, errorCode: response.statusCode)
+                       
                     }
                     
                 } else if let data = data
                 {
                        if let response = response as? HTTPURLResponse
                        {
-                        
-                        if response.statusCode == 200 {
-                        do{
-                            let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-
-                            let response = try JSONDecoder().decode(R.self, from: data)
-                            self?.onRequestSuccess(data: response)
-                        }
-                        catch let parseError
-                        {
-                             print("JSON Error \(parseError.localizedDescription)")
-                        }
-                    }
-                        else
-                        {
-                            
-                            do {
-                                    let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                                    
-                                    let response = try JSONDecoder().decode(E.self, from: data)
-                                    self?.onRequestFail(error: response)
-                                }
-                            catch let parseError
+                            let resultStatus = self?.getStatus(response)
+                            switch resultStatus!
                             {
-                                print("JSON Error \(parseError.localizedDescription)")
+                                case .success:
+                                    self?.serializeSuccessResponse(from: data)
+                                case .failure:
+                                    self?.serializeFailureResponse(from: data)
                             }
-                        }
                     }
                     
+                }
+                else
+                {
+                    self?.cancelRequest()
                 }
             }
             dataTask?.resume()
         }
     }
 
-    func getMethodType() -> HTTPMethod {
-        return .get
+
+    func  getStatus(_ response: HTTPURLResponse) -> ResponseStatus{
+        switch response.statusCode {
+        case 200...299: return .success
+        default: return .failure
+        }
     }
     
-    func getHeaders() -> HTTPHeaders {
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json"
-        ]
-        return headers
+  
+    func serializeSuccessResponse(from data:Data)
+    {
+        do{
+            
+            let response = try JSONDecoder().decode(R.self, from: data)
+            self.onRequestSuccess(data: response)
+        }
+        catch let parseError
+        {
+            self.setErrorDecodingData(message: parseError.localizedDescription)
+        }
     }
+    
+    func serializeFailureResponse(from data:Data)
+    {
+        do {
+ 
+            let response = try JSONDecoder().decode(E.self, from: data)
+            self.onRequestFail(error: response)
+        }
+        catch let parseError
+        {
+            self.setErrorDecodingData(message: parseError.localizedDescription)
+        }
+    }
+    
+    func setErrorDecodingData(message:String, encodingStatus:EncoingStatus = EncoingStatus.failure)
+    {
+        let jsonData = """
+            {
+            \(ErrorModel.ErrorCodingKeys.statusCode.rawValue):\(encodingStatus),
+            \(ErrorModel.ErrorCodingKeys.statusMessage.rawValue):\(message)
+            }
+            """.data(using: .utf8)!
+        serializeFailureResponse(from: jsonData)
+        
+    }
+    
+    func setErrorResponse(message:String, errorCode:Int)
+    {
+        let jsonData = """
+            {
+            \(ErrorModel.ErrorCodingKeys.statusCode.rawValue):\(errorCode),
+            \(ErrorModel.ErrorCodingKeys.statusMessage.rawValue):\(message)
+            }
+            """.data(using: .utf8)!
+        serializeFailureResponse(from: jsonData)
+        
+    }
+    
     
     func onRequestSuccess(data: R?) {
         preconditionFailure("Override onRequestSuccess func -> BaseLoginRequest")

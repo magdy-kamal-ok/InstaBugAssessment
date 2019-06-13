@@ -9,9 +9,9 @@
 import UIKit
 
 class MoviesListViewController: BaseMoviesListViewController {
-
+    // MARK: Parameters
     var moviesViewModel:MoviesViewModel?
-    
+    // MARK: ViewController lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPagination()
@@ -24,7 +24,7 @@ class MoviesListViewController: BaseMoviesListViewController {
         super.viewWillAppear(animated)
         self.moviesTableView.reloadData()
     }
-    
+    // MARK: override required methods needed from parent class
     override func setupCellNibName() {
         self.cellNibName = "MovieTableViewCell"
     }
@@ -35,61 +35,38 @@ class MoviesListViewController: BaseMoviesListViewController {
     
     override func getCellsCount(with section:Int) -> Int {
         
-        if getSectionsCount() > 1
-        {
-            if section == 0
-            {
-                return myMoviesArray.count
-            }
+        let sectionType = self.moviesViewModel!.moviesSections[section]
+        
+        switch sectionType {
+        case .myMovies:
+            return myMoviesArray.count
+        case .allMovies:
             return moviesViewModel?.allMoviesArray.count ?? 0
         }
-        else
-        {
-          return moviesViewModel?.allMoviesArray.count ?? 0
-        }
+    
     }
     
     override func getSectionsCount() -> Int {
-        return self.moviesViewModel?.getSectionsCount() ?? 1
+        return self.moviesViewModel?.getSectionsCount() ?? 0
     }
     
     override func getSectionTitle(with section: Int) -> String {
-        if getSectionsCount() > 1
-        {
-            if section == 0
-            {
-                return "My Movies"
-            }
-            return "All Movies"
-        }
-        else
-        {
-            return "All Movies"
-        }
+        
+        return (self.moviesViewModel?.moviesSections[section].rawValue)!
     }
     
     override func getCustomCell(_ tableView: UITableView, customCell: UITableViewCell, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let movieTableViewCell = customCell as! MovieTableViewCell
         var movie:Movie?
-        if  self.getSectionsCount() > 1
-        {
-            if indexPath.section == 0
-            {
-                movie = myMoviesArray[indexPath.row] as! Movie
+        let sectionType = self.moviesViewModel!.moviesSections[indexPath.section] 
+            switch sectionType {
+            case .myMovies:
+                movie = myMoviesArray[indexPath.row] as? Movie
                 movieTableViewCell.configureLocalMovieCell(movie: movie!)
-            }
-            else
-            {
-                movie = self.moviesViewModel?.allMoviesArray[indexPath.row] as! Movie
+            case .allMovies:
+                movie = self.moviesViewModel?.allMoviesArray[indexPath.row] as? Movie
                 movieTableViewCell.configureCell(movie: movie!)
-
             }
-        }
-        else
-        {
-            movie = self.moviesViewModel?.allMoviesArray[indexPath.row] as! Movie
-            movieTableViewCell.configureCell(movie: movie!)
-        }
        
         return movieTableViewCell
     }

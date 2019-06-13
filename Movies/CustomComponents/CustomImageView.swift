@@ -12,9 +12,9 @@ let imageCash = NSCache<AnyObject, AnyObject>()
 class CustomImageView: UIImageView
 {
     var imageUrlString:String?
-    func loadImageUsingUrlString(urlString:String)
+    func loadImageUsingUrlString(urlString:String, placeHolderImage:UIImage?)
     {
-        self.image = UIImage.init(named: "ic_movie_iphone_placeholder")!
+        self.image = placeHolderImage
         let url = NSURL(string: urlString)
         imageUrlString = urlString
         
@@ -28,7 +28,7 @@ class CustomImageView: UIImageView
             
             if error != nil {
                 DispatchQueue.main.async {
-                    self.image = UIImage.init(named: "ic_movie_iphone_placeholder")!
+                    self.image = placeHolderImage
                 }
                 return
             }
@@ -43,7 +43,7 @@ class CustomImageView: UIImageView
                 }
                 else
                 {
-                     self.image = UIImage.init(named: "ic_movie_iphone_placeholder")!
+                     self.image = placeHolderImage
                 }
             })
             }.resume()

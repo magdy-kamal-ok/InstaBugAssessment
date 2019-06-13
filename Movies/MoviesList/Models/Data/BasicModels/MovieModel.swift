@@ -20,7 +20,7 @@ struct Movie {
     var image:UIImage?
     
 
-    init(title: String, overview: String, releaseDate: String, image:UIImage?)
+    init(title: String, overview: String, releaseDate: String, image:UIImage)
     {
         self.title = title
         self.releaseDate = releaseDate
