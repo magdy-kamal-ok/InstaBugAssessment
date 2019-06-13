@@ -28,6 +28,8 @@
 		0469EB6B22B17A1E007C6357 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469EB6A22B17A1E007C6357 /* Constants.swift */; };
 		0469EB7122B192D5007C6357 /* NewMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469EB6F22B192D5007C6357 /* NewMovieViewController.swift */; };
 		0469EB7222B192D5007C6357 /* NewMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0469EB7022B192D5007C6357 /* NewMovieViewController.xib */; };
+		0469EB7522B1B0D4007C6357 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469EB7422B1B0D4007C6357 /* ErrorModel.swift */; };
+		0469EB7B22B1DADA007C6357 /* NewMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0469EB7A22B1DADA007C6357 /* NewMovieViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		0469EB6A22B17A1E007C6357 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0469EB6F22B192D5007C6357 /* NewMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMovieViewController.swift; sourceTree = "<group>"; };
 		0469EB7022B192D5007C6357 /* NewMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMovieViewController.xib; sourceTree = "<group>"; };
+		0469EB7422B1B0D4007C6357 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		0469EB7A22B1DADA007C6357 /* NewMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMovieViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 		0469EB3722B1181F007C6357 /* NewMovie */ = {
 			isa = PBXGroup;
 			children = (
+				0469EB7922B1DA9D007C6357 /* ViewModels */,
 				0469EB6C22B191A9007C6357 /* Views */,
 			);
 			path = NewMovie;
@@ -285,6 +290,7 @@
 		0469EB4E22B12826007C6357 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0469EB7322B1B0B9007C6357 /* ErrorModels */,
 				0469EB5122B1283F007C6357 /* BasicModels */,
 				0469EB5022B12834007C6357 /* ResponseModels */,
 				0469EB4F22B1282D007C6357 /* Source */,
@@ -373,6 +379,22 @@
 				0469EB6F22B192D5007C6357 /* NewMovieViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0469EB7322B1B0B9007C6357 /* ErrorModels */ = {
+			isa = PBXGroup;
+			children = (
+				0469EB7422B1B0D4007C6357 /* ErrorModel.swift */,
+			);
+			path = ErrorModels;
+			sourceTree = "<group>";
+		};
+		0469EB7922B1DA9D007C6357 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0469EB7A22B1DADA007C6357 /* NewMovieViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,8 +538,10 @@
 				0469EB5522B12882007C6357 /* MovieModel.swift in Sources */,
 				0469EB4422B118C2007C6357 /* MoviesListViewController.swift in Sources */,
 				0469EB6322B15553007C6357 /* MoviesRequest.swift in Sources */,
+				0469EB7B22B1DADA007C6357 /* NewMovieViewModel.swift in Sources */,
 				0469EB5322B1285F007C6357 /* MoviesResponseModel.swift in Sources */,
 				0469EB5E22B13DCF007C6357 /* BaseMoviesListViewController.swift in Sources */,
+				0469EB7522B1B0D4007C6357 /* ErrorModel.swift in Sources */,
 				0469EB6B22B17A1E007C6357 /* Constants.swift in Sources */,
 				0469EB6622B15811007C6357 /* MoviesBackendManager.swift in Sources */,
 				0469EB7122B192D5007C6357 /* NewMovieViewController.swift in Sources */,

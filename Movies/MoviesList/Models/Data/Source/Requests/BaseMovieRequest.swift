@@ -12,7 +12,7 @@ public typealias HTTPHeaders = [String: Any]
 public enum HTTPMethod : String {
     case get = "GET"
 }
-public class BaseMovieRequest<T: Decodable>: NSObject {
+public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
@@ -30,22 +30,44 @@ public class BaseMovieRequest<T: Decodable>: NSObject {
             dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
                 defer { self?.dataTask = nil }
                 if let error = error {
-                    if !(self?.isForcingCancel)! {
-                        self?.onRequestFail()
-                    }
-                } else if let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    do {
-                        let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-
-                        let apiResponse = try JSONDecoder().decode(T.self, from: data)
-                        self?.onRequestSuccess(data: apiResponse)
-                    }
-                    catch
+                    if !(self?.isForcingCancel)!
                     {
                         
                     }
+                    
+                } else if let data = data
+                {
+                       if let response = response as? HTTPURLResponse
+                       {
+                        
+                        if response.statusCode == 200 {
+                        do{
+                            let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+
+                            let response = try JSONDecoder().decode(R.self, from: data)
+                            self?.onRequestSuccess(data: response)
+                        }
+                        catch let parseError
+                        {
+                             print("JSON Error \(parseError.localizedDescription)")
+                        }
+                    }
+                        else
+                        {
+                            
+                            do {
+                                    let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                                    
+                                    let response = try JSONDecoder().decode(E.self, from: data)
+                                    self?.onRequestFail(error: response)
+                                }
+                            catch let parseError
+                            {
+                                print("JSON Error \(parseError.localizedDescription)")
+                            }
+                        }
+                    }
+                    
                 }
             }
             dataTask?.resume()
@@ -63,11 +85,11 @@ public class BaseMovieRequest<T: Decodable>: NSObject {
         return headers
     }
     
-    func onRequestSuccess(data: T?) {
+    func onRequestSuccess(data: R?) {
         preconditionFailure("Override onRequestSuccess func -> BaseLoginRequest")
     }
     
-    func onRequestFail() {
+    func onRequestFail(error: E?) {
         preconditionFailure("Override onRequestFail func -> BaseLoginRequest")
     }
     

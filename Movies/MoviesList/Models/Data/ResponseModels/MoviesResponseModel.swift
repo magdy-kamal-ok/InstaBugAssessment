@@ -17,7 +17,7 @@ struct MovieResponseModel {
 
 extension MovieResponseModel: Decodable {
     
-    private enum MovieApiResponseCodingKeys: String, CodingKey {
+    private enum MovieResponseCodingKeys: String, CodingKey {
         case page
         case numberOfResults = "total_results"
         case numberOfPages = "total_pages"
@@ -25,12 +25,12 @@ extension MovieResponseModel: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: MovieApiResponseCodingKeys.self)
+        let values = try decoder.container(keyedBy: MovieResponseCodingKeys.self)
         
-        page = try container.decode(Int.self, forKey: .page)
-        numberOfResults = try container.decode(Int.self, forKey: .numberOfResults)
-        numberOfPages = try container.decode(Int.self, forKey: .numberOfPages)
-        movies = try container.decode([Movie].self, forKey: .movies)
+        page = try values.decode(Int.self, forKey: .page)
+        numberOfResults = try values.decode(Int.self, forKey: .numberOfResults)
+        numberOfPages = try values.decode(Int.self, forKey: .numberOfPages)
+        movies = try values.decode([Movie].self, forKey: .movies)
         
     }
 }

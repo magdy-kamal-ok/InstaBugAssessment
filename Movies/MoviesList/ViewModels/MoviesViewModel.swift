@@ -24,9 +24,9 @@ class MoviesViewModel: NSObject {
     //
     lazy private var backendManager = MoviesBackendManager()
     private var currentOffset: Int = 1
-    private var listTotalCount: Int = 1
+    public private(set) var listTotalCount: Int = 60
     public private(set) var allMoviesArray: NSMutableArray = []
-    private var isLoadingMore: Bool = false
+    public private(set) var isLoadingMore: Bool = false
     private var isSwipeAndRefresh : Bool = false
     weak var movieViewControllerDelegate:MovieViewControllerDelegate?
     
@@ -48,6 +48,23 @@ class MoviesViewModel: NSObject {
         let requiredOffset = String(self.currentOffset)
         backendManager.getMovies(delegate: self, offset: requiredOffset)
     }
+    //
+    // MARK: Cancel Network Request
+    //
+    
+    func cancelCoursesDatatRequest() {
+        backendManager.cancelMoviesDatatRequest()
+    }
+    
+    public func getSectionsCount()->Int
+    {
+        if myMoviesArray.count > 0
+        {
+            return 2
+        }
+        return 1
+    }
+    
     public func refreshMoviesList()
     {
         self.isSwipeAndRefresh = true
@@ -60,12 +77,7 @@ class MoviesViewModel: NSObject {
         self.currentOffset += 1
         self.getMoviesData()
     }
-    //
-    // MARK: Cancel Network Request
-    //
-    func cancelCoursesDatatRequest() {
-        backendManager.cancelMoviesDatatRequest()
-    }
+
     private func setViewsStates()
     {
         if self.isSwipeAndRefresh
@@ -97,16 +109,19 @@ extension MoviesViewModel:MovieRequestDelegate
         }
         if let moviesResponse = data
         {
-            self.listTotalCount = moviesResponse.numberOfResults
+            //self.listTotalCount = moviesResponse.numberOfResults
             
             self.allMoviesArray.addObjects(from: moviesResponse.movies)
         }
         setViewsStates()
     }
     
-    func requestFailed() {
-        //
-    }
+    func requestFailed(error:ErrorModel?) {
+        self.isSwipeAndRefresh = false
+        movieViewControllerDelegate?.refreshMoviesFinished()
+        self.isLoadingMore = false
+        movieViewControllerDelegate?.loadingMoreMoviesFinished()
     
+    }
     
 }

@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewMovieViewController" customModule="Movies" customModuleProvider="target">
             <connections>
+                <outlet property="movieDatePicker" destination="Tt6-IW-1Ou" id="3wk-IF-yDc"/>
+                <outlet property="movieOverViewTextView" destination="VxD-X7-j64" id="VJV-aK-vOs"/>
+                <outlet property="movieTitlTextField" destination="cCt-wK-IAp" id="Ssg-Uj-NWB"/>
+                <outlet property="posterImageView" destination="r2m-5p-T9J" id="V27-pd-XFn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,6 +31,9 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGd-bP-UvH">
                     <rect key="frame" x="149" y="100" width="22" height="22"/>
+                    <connections>
+                        <action selector="selectImageBtnClicked:" destination="-1" eventType="touchUpInside" id="vY9-j4-lXl"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vua-Ze-Tqe">
                     <rect key="frame" x="16" y="194" width="87" height="21"/>
@@ -72,9 +79,9 @@
                     <date key="date" timeIntervalSinceReferenceDate="582063020.933635">
                         <!--2019-06-12 20:10:20 +0000-->
                     </date>
-                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                        <!--1970-01-01 11:00:00 +0000-->
-                    </date>
+                    <connections>
+                        <action selector="datePickerValueChanged:" destination="-1" eventType="valueChanged" id="t22-eu-JvT"/>
+                    </connections>
                 </datePicker>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neC-4x-Wj6">
                     <rect key="frame" x="16" y="358" width="89.5" height="21"/>
@@ -91,6 +98,9 @@
                         <constraint firstAttribute="height" constant="30" id="VgE-VT-2mj"/>
                     </constraints>
                     <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="doneBtnClicked:" destination="-1" eventType="touchUpInside" id="ObW-gM-DVs"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnh-tm-ZQ5" userLabel="resetBtn">
                     <rect key="frame" x="16" y="522" width="39" height="30"/>
@@ -98,6 +108,9 @@
                         <constraint firstAttribute="height" constant="30" id="pts-H2-Pdk"/>
                     </constraints>
                     <state key="normal" title="Reset"/>
+                    <connections>
+                        <action selector="resetBtnClicked:" destination="-1" eventType="touchUpInside" id="do6-pc-r2K"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

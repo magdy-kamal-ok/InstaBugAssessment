@@ -14,10 +14,10 @@ protocol MovieRequestDelegate: NSObjectProtocol {
     
     func requestSucceeded(data: MovieResponseModel?)
     
-    func requestFailed()
+    func requestFailed(error: ErrorModel?)
 }
 
-class MoviesRequest: BaseMovieRequest<MovieResponseModel> {
+class MoviesRequest: BaseMovieRequest<MovieResponseModel, ErrorModel> {
     
     weak var delegate: MovieRequestDelegate?
     
@@ -27,18 +27,16 @@ class MoviesRequest: BaseMovieRequest<MovieResponseModel> {
     
     public func getMoviesData(offset:String){
         delegate?.requestWillSend()
-        getMoviesRequsetData(from: "http://api.themoviedb.org/3/discover/movie?api_key=acea91d2bff1c53e6604e4985b6989e2&page=\(offset)")
+        let apiUrl = Constants.ApiUrl+"\(offset)"
+        getMoviesRequsetData(from: apiUrl)
     }
     
     override func onRequestSuccess(data: MovieResponseModel?) {
         delegate?.requestSucceeded(data: data)
     }
-    
-    override func onRequestFail() {
-        delegate?.requestFailed()
+    override func onRequestFail(error: ErrorModel?) {
+        delegate?.requestFailed(error: error)
     }
+
     
-    override func getHeaders() -> HTTPHeaders {
-        return ["":""]
-    }
 }

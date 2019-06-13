@@ -31,16 +31,27 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configureLocalMovieCell(movie:Movie)
+    {
+        setCellData(movie: movie)
+        self.posterImageView.image = movie.image
+        
+    }
     func configureCell(movie:Movie)
+    {
+        setCellData(movie: movie)
+        let url = Constants.BaseImageUrl + movie.posterPath
+        self.posterImageView.loadImageUsingUrlString(urlString: url)
+        
+    }
+    
+    private func setCellData(movie:Movie)
     {
         self.titleLbl.text = movie.title
         self.dateLbl.text = movie.releaseDate
         self.overViewLbl.text = movie.overview
-        let url = Constants.BaseImageUrl + movie.posterPath
-        self.posterImageView.loadImageUsingUrlString(urlString: url)
         setImagesControl()
     }
-    
     fileprivate func setImagesControl(){
         self.posterImageView.isUserInteractionEnabled = true
         self.imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleZoomTap(_:)))

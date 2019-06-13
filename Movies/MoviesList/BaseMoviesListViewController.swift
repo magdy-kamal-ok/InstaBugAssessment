@@ -137,12 +137,20 @@ class BaseMoviesListViewController: UIViewController {
         preconditionFailure("You have to Override getCellHeight Function first to be able to set cell height")
     }
 
-    func getCellsCount()->Int
+    func getCellsCount(with section:Int)->Int
     {
-        preconditionFailure("You have to Override getCellsCount Function first to be able to set nmber of cells count")
+        preconditionFailure("You have to Override getCellsCount Function first to be able to set number of cells count")
     }
 
+    func getSectionsCount()->Int
+    {
+        preconditionFailure("You have to Override getSectionsCount Function first to be able to set number of sections count")
+    }
     
+    func getSectionTitle(with section:Int)->String
+    {
+        preconditionFailure("You have to Override getSectionsTitle Function first to be able to set section title")
+    }
     
     // MARK: - Loading Progress
     // MARK: Show
@@ -188,12 +196,19 @@ extension BaseMoviesListViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return getCellHeight()
     }
-    
+    // MARK: Title for section
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        return self.getSectionTitle(with:section)
+    }
+    // MARK: Number of Sections
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.getSectionsCount()
+    }
     
     // MARK: Number of rows
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getCellsCount()
+        return self.getCellsCount(with:section)
     }
     
     
@@ -222,10 +237,10 @@ extension BaseMoviesListViewController: UITableViewDelegate {
                     self.handlePaginationRequest()
                 }
             }
-            else
-            {
-                endRefreshTableView()
-            }
+//            else
+//            {
+//                endRefreshTableView()
+//            }
         }
     }
 }

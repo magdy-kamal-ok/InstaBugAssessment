@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 struct Movie {
     var id: Int? = 0
     var posterPath: String = ""
@@ -15,12 +17,15 @@ struct Movie {
     let releaseDate: String
     var rating: Double = 0.0
     let overview: String
+    var image:UIImage?
     
-    
-    init(title: String, overview: String, releaseDate: String) {
+
+    init(title: String, overview: String, releaseDate: String, image:UIImage?)
+    {
         self.title = title
         self.releaseDate = releaseDate
         self.overview = overview
+        self.image = image
     }
 }
 
@@ -38,14 +43,14 @@ extension Movie: Decodable {
     
     
     init(from decoder: Decoder) throws {
-        let movieContainer = try decoder.container(keyedBy: MovieCodingKeys.self)
+        let values = try decoder.container(keyedBy: MovieCodingKeys.self)
         
-        id = try movieContainer.decode(Int.self, forKey: .id)
-        posterPath = try movieContainer.decode(String.self, forKey: .posterPath)
-        backdrop = try movieContainer.decode(String.self, forKey: .backdrop)
-        title = try movieContainer.decode(String.self, forKey: .title)
-        releaseDate = try movieContainer.decode(String.self, forKey: .releaseDate)
-        rating = try movieContainer.decode(Double.self, forKey: .rating)
-        overview = try movieContainer.decode(String.self, forKey: .overview)
+        id = try values.decode(Int.self, forKey: .id)
+        posterPath = try values.decode(String.self, forKey: .posterPath)
+        backdrop = try values.decode(String.self, forKey: .backdrop)
+        title = try values.decode(String.self, forKey: .title)
+        releaseDate = try values.decode(String.self, forKey: .releaseDate)
+        rating = try values.decode(Double.self, forKey: .rating)
+        overview = try values.decode(String.self, forKey: .overview)
     }
 }
