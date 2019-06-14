@@ -52,8 +52,13 @@ class MoviesListViewController: BaseMoviesListViewController {
     }
     
     override func getSectionTitle(with section: Int) -> String {
-        
-        return ((self.moviesViewModel?.moviesSections[section].rawValue)?.localized)!
+        let sectionType = self.moviesViewModel!.moviesSections[section]
+        switch sectionType {
+        case .myMovies:
+            return Constants.MY_MOVIES.localized
+        case .allMovies:
+            return Constants.ALL_MOVIES.localized
+        }
     }
     
     override func getCustomCell(_ tableView: UITableView, customCell: UITableViewCell, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +82,7 @@ class MoviesListViewController: BaseMoviesListViewController {
         let currentListCount = (self.moviesViewModel?.allMoviesArray.count)!
         if currentListCount < totalListCount && !(self.moviesViewModel?.isLoadingMore)!
         {
-            showLoadingMoreHeader()
+            showLoadingMoreView()
             self.moviesViewModel?.loadMoreMovies()
         }
     }
@@ -103,7 +108,7 @@ extension MoviesListViewController:MovieViewControllerDelegate
     
     func loadingMoreMoviesFinished() {
         DispatchQueue.main.async {
-            self.removeLoadingMoreHeader()
+            self.removeLoadingMoreView()
         }
         
     }

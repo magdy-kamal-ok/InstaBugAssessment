@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 
-enum MoviesSection:String {
-    case myMovies = "myMovies"
-    case allMovies = "allMovies"
+enum MoviesSection {
+    case myMovies
+    case allMovies
 }
 
 protocol MovieViewControllerDelegate: NSObjectProtocol {

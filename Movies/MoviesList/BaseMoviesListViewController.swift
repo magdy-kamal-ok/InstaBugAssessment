@@ -47,6 +47,7 @@ class BaseMoviesListViewController: UIViewController {
     private func setAccessiblityIdentifiers()
     {
         self.moviesTableView.accessibilityIdentifier = Constants.TABLEVIEW_IDENTIFIER
+        self.loadingIndicator.accessibilityIdentifier = Constants.LOADING_INDICATOR_IDENTIFIER
 
     }
     // MARK: right navbar button
@@ -92,7 +93,7 @@ class BaseMoviesListViewController: UIViewController {
         // override this when you need to handlePaginationRequest
     }
     
-    func showLoadingMoreHeader() -> Void {
+    func showLoadingMoreView() -> Void {
         paginationIndicator = UIActivityIndicatorView.init()
         self.paginationIndicator?.accessibilityIdentifier = Constants.Load_More_INDICATOR_IDENTIFIER
         paginationIndicator?.color = UIColor.gray
@@ -101,7 +102,7 @@ class BaseMoviesListViewController: UIViewController {
         self.moviesTableView.tableFooterView =  paginationIndicator
     }
     
-    func removeLoadingMoreHeader(){
+    func removeLoadingMoreView(){
         if paginationIndicator != nil{
             if paginationIndicator!.isDescendant(of: self.view) {
                 paginationIndicator?.removeFromSuperview()

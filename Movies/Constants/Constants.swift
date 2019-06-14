@@ -33,6 +33,8 @@ class Constants: NSObject {
     public static let EMPTY_OVERVIEW_MSG = "emptyOverViewMsg"
     public static let NEW_MOVIE_TITLE = "newMovie"
     public static let MOVIES_LIST_TITLE = "moviesList"
+    public static let MY_MOVIES = "myMovies"
+    public static let ALL_MOVIES = "allMovies"
     
     
     // MARK: UITest accessability identifiers
@@ -40,7 +42,11 @@ class Constants: NSObject {
     public static let ADD_NEW_VIDEO_BTN_IDENTIFIER = "AddMoview"
     public static let Load_More_INDICATOR_IDENTIFIER = "loadMore"
     public static let PULL_REFRESH_INDICATOR_IDENTIFIER = "pullRefresh"
+    public static let LOADING_INDICATOR_IDENTIFIER = "loadIndicator"
     public static let POSTER_IMAGE_VIEW_IDENTIFIER = "posterImage"
     public static let ZOOM_POSTER_IMAGE_IDENTIFIER = "zoomPosterImage"
+    public static let MOVIE_TITLE_IDENTIFIER = "movieTitle"
+    public static let MOVIE_OVERVIEW_IDENTIFIER = "movieOverView"
+    public static let MOVIE_DATE_IDENTIFIER = "movieDate"
     
 }

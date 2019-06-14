@@ -57,6 +57,9 @@ class MovieTableViewCell: UITableViewCell {
     private func setImageViewsAccessibility()
     {
         self.posterImageView.accessibilityIdentifier = Constants.POSTER_IMAGE_VIEW_IDENTIFIER
+        self.titleLbl.accessibilityIdentifier = Constants.MOVIE_TITLE_IDENTIFIER
+        self.overViewLbl.accessibilityIdentifier = Constants.MOVIE_OVERVIEW_IDENTIFIER
+        self.dateLbl.accessibilityIdentifier = Constants.MOVIE_DATE_IDENTIFIER
     }
     fileprivate func setImagesControl(){
        
@@ -77,10 +80,11 @@ class MovieTableViewCell: UITableViewCell {
     func performZoomInForStartingImageView(startingImageView:UIImageView)
     {
         self.zoomImageView = startingImageView
-        self.zoomImageView?.accessibilityIdentifier = Constants.ZOOM_POSTER_IMAGE_IDENTIFIER
+        
 
         startingFrame = startingImageView.superview?.convert(startingImageView.frame, to: nil)
         let zoomingImageView = UIImageView(frame: startingFrame!)
+        zoomingImageView.accessibilityIdentifier = Constants.ZOOM_POSTER_IMAGE_IDENTIFIER
         zoomingImageView.image = startingImageView.image
         zoomingImageView.isUserInteractionEnabled = true
         zoomingImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleZoomOutTap)))

@@ -15,8 +15,6 @@ class MoviesListUITests: XCTestCase {
     override func setUp() {
         super.setUp()
         app = XCUIApplication()
-        
-
     }
 
     override func tearDown() {
@@ -41,8 +39,8 @@ class MoviesListUITests: XCTestCase {
         let finish = lastCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: -10))
 
         start.press(forDuration: 0, thenDragTo: finish)
-        _ = app.waitForExistence(timeout: 10)
-        XCTAssert(tableView.cells.count == 40)
+        let loadMore = app.activityIndicators[Constants.Load_More_INDICATOR_IDENTIFIER]
+        XCTAssert(loadMore.exists)
         
        
     }
@@ -50,16 +48,47 @@ class MoviesListUITests: XCTestCase {
     func testMoviesListPullRefresh_Example() {
         app.launch()
         let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
+        
         let firstCell = tableView.cells.element(boundBy: 0)
         let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
-        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 10))
+        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 5))
         start.press(forDuration: 0, thenDragTo: finish)
-        _ = app.waitForExistence(timeout: 10)
+        _ = app.waitForExistence(timeout: 5)
         XCTAssert(tableView.cells.count == 20)
         
     }
     
-    func testMoviesListZoomImage_Example() {
+    func testMovieImageExists_Example() {
+        app.launch()
+        let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
+        let firstCell = tableView.cells.element(boundBy: 0)
+        let posterImage = firstCell.images[Constants.POSTER_IMAGE_VIEW_IDENTIFIER]
+        XCTAssert(posterImage.exists)
+    }
+    
+    func testMovieTitleExists_Example() {
+        app.launch()
+        let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
+        let firstCell = tableView.cells.element(boundBy: 0)
+        let movieTitle = firstCell.staticTexts[Constants.MOVIE_TITLE_IDENTIFIER]
+        XCTAssert(movieTitle.exists)
+    }
+    func testMovieOverViewExists_Example() {
+        app.launch()
+        let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
+        let firstCell = tableView.cells.element(boundBy: 0)
+        let movieOverView = firstCell.staticTexts[Constants.MOVIE_OVERVIEW_IDENTIFIER]
+        XCTAssert(movieOverView.exists)
+    }
+    func testMovieDateExists_Example() {
+        app.launch()
+        let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
+        let firstCell = tableView.cells.element(boundBy: 0)
+        let movieDate = firstCell.staticTexts[Constants.MOVIE_DATE_IDENTIFIER]
+        XCTAssert(movieDate.exists)
+    }
+    
+    func testMovieZoomInImage_Example() {
         app.launch()
         let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
         let firstCell = tableView.cells.element(boundBy: 0)
@@ -68,7 +97,16 @@ class MoviesListUITests: XCTestCase {
         let zoomImage = app.images[Constants.ZOOM_POSTER_IMAGE_IDENTIFIER]
         XCTAssert(zoomImage.exists)
     }
-    
+    func testMovieZoomInOutImage_Example() {
+        app.launch()
+        let tableView = app.tables[Constants.TABLEVIEW_IDENTIFIER]
+        let firstCell = tableView.cells.element(boundBy: 0)
+        let posterImage = firstCell.images[Constants.POSTER_IMAGE_VIEW_IDENTIFIER]
+        posterImage.tap()
+        let zoomImage = app.images[Constants.ZOOM_POSTER_IMAGE_IDENTIFIER]
+        zoomImage.tap()
+        XCTAssert(posterImage.exists)
+    }
     
     func testOpenNewVideo_Example() {
         app.launch()
