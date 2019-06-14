@@ -18,7 +18,7 @@ struct MovieResponseModel {
 extension MovieResponseModel: Decodable {
     
     private enum MovieResponseCodingKeys: String, CodingKey {
-        case page
+        case page = "page"
         case numberOfResults = "total_results"
         case numberOfPages = "total_pages"
         case movies = "results"

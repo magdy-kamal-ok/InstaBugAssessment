@@ -31,6 +31,7 @@ class MoviesRequest: BaseMovieRequest<MovieResponseModel, ErrorModel> {
         getMoviesRequsetData(from: apiUrl)
     }
     
+    
     override func onRequestSuccess(data: MovieResponseModel?) {
         delegate?.requestSucceeded(data: data)
     }

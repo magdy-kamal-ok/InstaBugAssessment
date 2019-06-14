@@ -6,10 +6,11 @@
 //  Copyright © 2019 OwnProjects. All rights reserved.
 //
 import Foundation
+import UIKit
 
 enum MoviesSection:String {
-    case myMovies = "My Movies"
-    case allMovies = "All Movies"
+    case myMovies = "myMovies"
+    case allMovies = "allMovies"
 }
 
 protocol MovieViewControllerDelegate: NSObjectProtocol {
@@ -18,7 +19,7 @@ protocol MovieViewControllerDelegate: NSObjectProtocol {
     func refreshMoviesFinished()
     func loadingMoreMoviesFinished()
     func reloadMoviesData()
-    
+    func showAlert(alert:UIAlertController)
 }
 
 class MoviesViewModel: NSObject {
@@ -34,6 +35,7 @@ class MoviesViewModel: NSObject {
     private var isSwipeAndRefresh : Bool = false
     weak var movieViewControllerDelegate:MovieViewControllerDelegate?
     public private(set) var moviesSections = [MoviesSection]()
+    private var maximumPageNumber = 1000
     //
     // MARK: Initializer
     //
@@ -82,31 +84,62 @@ class MoviesViewModel: NSObject {
     }
     public func loadMoreMovies()
     {
-        self.isLoadingMore = true
-        self.currentOffset += 1
-        self.getMoviesData()
+        if currentOffset < self.maximumPageNumber
+        {
+            self.isLoadingMore = true
+            self.currentOffset += 1
+            self.getMoviesData()
+        }
+        else
+        {
+            stopLoadingMore()
+        }
     }
 
     private func setViewsStates()
     {
         if self.isSwipeAndRefresh
         {
-            self.isSwipeAndRefresh = false
-            movieViewControllerDelegate?.refreshMoviesFinished()
+            stopRefreshing()
         }
         else if self.isLoadingMore
         {
-            self.isLoadingMore = false
-            movieViewControllerDelegate?.loadingMoreMoviesFinished()
+            stopLoadingMore()
         }
         movieViewControllerDelegate?.reloadMoviesData()
+    }
+    private func stopLoadingMore()
+    {
+        self.isLoadingMore = false
+        movieViewControllerDelegate?.loadingMoreMoviesFinished()
+    }
+    private func stopRefreshing()
+    {
+        self.isSwipeAndRefresh = false
+        movieViewControllerDelegate?.refreshMoviesFinished()
+    }
+    
+    func showAlertMessage(message:String)
+    {
+        let alert = UIAlertController(title: "alert".localized, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "retry".localized, style: UIAlertAction.Style.default, handler: { (action) in
+            self.getMoviesData()
+        }))
+        alert.addAction(UIAlertAction(title: "cancel".localized, style: UIAlertAction.Style.cancel, handler: { (action) in
+            self.cancelCoursesDatatRequest()
+        }))
+       
+        movieViewControllerDelegate?.showAlert(alert: alert)
     }
 }
 extension MoviesViewModel:MovieRequestDelegate
 {
+    
     func requestWillSend() {
-        
-        movieViewControllerDelegate?.showLoader(flag: true)
+        if !self.isLoadingMore && !self.isSwipeAndRefresh
+        {
+            movieViewControllerDelegate?.showLoader(flag: true)
+        }
     }
     
     func requestSucceeded(data: MovieResponseModel?) {
@@ -130,6 +163,8 @@ extension MoviesViewModel:MovieRequestDelegate
         movieViewControllerDelegate?.refreshMoviesFinished()
         self.isLoadingMore = false
         movieViewControllerDelegate?.loadingMoreMoviesFinished()
+        movieViewControllerDelegate?.showLoader(flag: false)
+        showAlertMessage(message: (error?.message)!)
     
     }
     

@@ -26,17 +26,24 @@ class NewMovieViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        movieDatePicker.minimumDate = Date()
+        resetDateForDatePicker()
+        setTextOverViewTheme()
+        newMovieViewModel.delegate = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "newMovie".localized
 
+    }
+    
     // MARK: viewController Actions
     @IBAction func resetBtnClicked(_ sender: UIButton) {
         
         self.newMovieViewModel.selectedImage = nil
+        self.posterImageView.image = UIImage.init(named: "ic_movie_iphone_placeholder")!
         self.movieTitlTextField.text = ""
         self.movieOverViewTextView.text = ""
-        self.movieDatePicker.date = Date()
+        resetDateForDatePicker()
     }
     
     @IBAction func doneBtnClicked(_ sender: UIButton) {
@@ -55,9 +62,10 @@ class NewMovieViewController: UIViewController {
         self.newMovieViewModel.selectedDate = sender.date
     }
 }
-
+// MARK: required functions
 extension NewMovieViewController
 {
+    // MARK: open Image picker
     func openGalleryView()
     {
         imagePicker =  UIImagePickerController()
@@ -65,7 +73,21 @@ extension NewMovieViewController
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    // MARK: set minimum date for selection
+    func resetDateForDatePicker()
+    {
+        self.newMovieViewModel.selectedDate = Date()
+    }
+    func setTextOverViewTheme()
+    {
+        let borderColor = UIColor.lightGray
+        movieOverViewTextView.layer.borderWidth = 0.5
+        movieOverViewTextView.layer.borderColor = borderColor.cgColor
+        movieOverViewTextView.layer.cornerRadius = 5.0
+    }
 }
+
+// MARK: image picker delegate
 extension NewMovieViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -78,4 +100,14 @@ extension NewMovieViewController: UINavigationControllerDelegate, UIImagePickerC
         self.posterImageView.image = self.newMovieViewModel.selectedImage
     }
 
+}
+
+extension NewMovieViewController:NewMovieViewControllerDelegate
+{
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
+    
 }

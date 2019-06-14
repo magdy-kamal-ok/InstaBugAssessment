@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ErrorModel.swift
 //  Movies
 //
 //  Created by mac on 6/13/19.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct ErrorModel {
+public typealias Codable = Decodable & Encodable
+
+struct ErrorModel : Codable{
     var code: Int
     var message: String
     
@@ -19,10 +21,9 @@ struct ErrorModel {
     }
 }
 
-extension ErrorModel: Decodable {
+extension ErrorModel {
     
     enum ErrorCodingKeys: String, CodingKey {
-
         case statusCode = "status_code"
         case statusMessage = "status_message"
 

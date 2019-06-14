@@ -10,18 +10,33 @@ import Foundation
 
 class HelperDateFormatter: NSObject {
     
-    class func formatDate(dateString:String)->String
+    class func formatDate(date:Date)->String
     {
-        let fromDateFromatter = DateFormatter()
-        fromDateFromatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let toDateFromatter = DateFormatter()
-        toDateFromatter.dateFormat = "MMM dd,yyyy"
-        
-        if let date = fromDateFromatter.date(from: dateString) {
-            return toDateFromatter.string(from: date)
-        } else {
-            return ""
+        let dateFromatter = DateFormatter()
+        dateFromatter.dateFormat = "MMM dd,yyyy"
+        return dateFromatter.string(from: date)
+    }
+    
+    class func formatDateAsDashed(date:Date)->String
+    {
+        let dateFromatter = DateFormatter()
+        dateFromatter.dateFormat = "yyyy-mm-dd"
+        return dateFromatter.string(from: date)
+    }
+    
+    class func getDateFromString(dateString:String)->Date
+    {
+        let dateFromatter = DateFormatter()
+        dateFromatter.dateFormat = "yyyy-mm-dd"
+        if let date = dateFromatter.date(from: dateString)
+        {
+            return date
         }
+        else
+        {
+            assertionFailure("failed to convert Date")
+           return Date()
+        }
+        
     }
 }

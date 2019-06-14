@@ -30,23 +30,21 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
                     if !(self?.isForcingCancel)!
                     {
                         self?.setErrorResponse(message: error.localizedDescription, errorCode: response.statusCode)
-                       
                     }
                     
                 } else if let data = data
                 {
-                       if let response = response as? HTTPURLResponse
-                       {
-                            let resultStatus = self?.getStatus(response)
-                            switch resultStatus!
-                            {
-                                case .success:
-                                    self?.serializeSuccessResponse(from: data)
-                                case .failure:
-                                    self?.serializeFailureResponse(from: data)
-                            }
+                   if let response = response as? HTTPURLResponse
+                   {
+                        let resultStatus = self?.getStatus(response)
+                        switch resultStatus!
+                        {
+                            case .success:
+                                self?.serializeSuccessResponse(from: data)
+                            case .failure:
+                                self?.serializeFailureResponse(from: data)
+                        }
                     }
-                    
                 }
                 else
                 {
@@ -58,10 +56,10 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     }
 
 
-    func  getStatus(_ response: HTTPURLResponse) -> ResponseStatus{
+    func getStatus(_ response: HTTPURLResponse) -> ResponseStatus{
         switch response.statusCode {
-        case 200...299: return .success
-        default: return .failure
+            case 200...299: return .success
+            default: return .failure
         }
     }
     
@@ -73,7 +71,7 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
             let response = try JSONDecoder().decode(R.self, from: data)
             self.onRequestSuccess(data: response)
         }
-        catch let parseError
+        catch let parseError as NSError
         {
             self.setErrorDecodingData(message: parseError.localizedDescription)
         }
@@ -86,36 +84,31 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
             let response = try JSONDecoder().decode(E.self, from: data)
             self.onRequestFail(error: response)
         }
-        catch let parseError
+        catch let parseError as NSError
         {
             self.setErrorDecodingData(message: parseError.localizedDescription)
+            
         }
     }
     
     func setErrorDecodingData(message:String, encodingStatus:EncoingStatus = EncoingStatus.failure)
     {
-        let jsonData = """
-            {
-            \(ErrorModel.ErrorCodingKeys.statusCode.rawValue):\(encodingStatus),
-            \(ErrorModel.ErrorCodingKeys.statusMessage.rawValue):\(message)
-            }
-            """.data(using: .utf8)!
-        serializeFailureResponse(from: jsonData)
+        let error = ErrorModel.init(code: encodingStatus.rawValue, message: message)
         
+        respondWithError(error: error)
     }
     
     func setErrorResponse(message:String, errorCode:Int)
     {
-        let jsonData = """
-            {
-            \(ErrorModel.ErrorCodingKeys.statusCode.rawValue):\(errorCode),
-            \(ErrorModel.ErrorCodingKeys.statusMessage.rawValue):\(message)
-            }
-            """.data(using: .utf8)!
-        serializeFailureResponse(from: jsonData)
+        let error = ErrorModel.init(code: errorCode, message: message)
+        respondWithError(error: error)
         
     }
     
+    func respondWithError(error:ErrorModel)
+    {
+        self.onRequestFail(error: error as? E)
+    }
     
     func onRequestSuccess(data: R?) {
         preconditionFailure("Override onRequestSuccess func -> BaseLoginRequest")

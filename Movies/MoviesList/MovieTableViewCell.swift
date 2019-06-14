@@ -48,7 +48,7 @@ class MovieTableViewCell: UITableViewCell {
     private func setCellData(movie:Movie)
     {
         self.titleLbl.text = movie.title
-        self.dateLbl.text = movie.releaseDate
+        self.dateLbl.text = HelperDateFormatter.formatDate(date: HelperDateFormatter.getDateFromString(dateString: movie.releaseDate))
         self.overViewLbl.text = movie.overview
         setImagesControl()
     }

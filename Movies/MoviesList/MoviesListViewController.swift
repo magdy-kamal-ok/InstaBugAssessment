@@ -23,6 +23,7 @@ class MoviesListViewController: BaseMoviesListViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.moviesTableView.reloadData()
+        self.title = "moviesList".localized
     }
     // MARK: override required methods needed from parent class
     override func setupCellNibName() {
@@ -52,7 +53,7 @@ class MoviesListViewController: BaseMoviesListViewController {
     
     override func getSectionTitle(with section: Int) -> String {
         
-        return (self.moviesViewModel?.moviesSections[section].rawValue)!
+        return ((self.moviesViewModel?.moviesSections[section].rawValue)?.localized)!
     }
     
     override func getCustomCell(_ tableView: UITableView, customCell: UITableViewCell, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,6 +93,10 @@ class MoviesListViewController: BaseMoviesListViewController {
 }
 extension MoviesListViewController:MovieViewControllerDelegate
 {
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func refreshMoviesFinished() {
         self.checkRefreshControlState()
     }

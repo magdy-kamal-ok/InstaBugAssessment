@@ -12,10 +12,8 @@ import UIKit
 struct Movie {
     var id: Int? = 0
     var posterPath: String = ""
-    var backdrop: String = ""
     let title: String
     let releaseDate: String
-    var rating: Double = 0.0
     let overview: String
     var image:UIImage?
     
@@ -32,13 +30,11 @@ struct Movie {
 extension Movie: Decodable {
     
     enum MovieCodingKeys: String, CodingKey {
-        case id
+        case id         = "id"
         case posterPath = "poster_path"
-        case backdrop = "backdrop_path"
-        case title
+        case title      = "title"
         case releaseDate = "release_date"
-        case rating = "vote_average"
-        case overview
+        case overview    = "overview"
     }
     
     
@@ -47,10 +43,8 @@ extension Movie: Decodable {
         
         id = try values.decode(Int.self, forKey: .id)
         posterPath = try values.decode(String.self, forKey: .posterPath)
-        backdrop = try values.decode(String.self, forKey: .backdrop)
         title = try values.decode(String.self, forKey: .title)
         releaseDate = try values.decode(String.self, forKey: .releaseDate)
-        rating = try values.decode(Double.self, forKey: .rating)
         overview = try values.decode(String.self, forKey: .overview)
     }
 }

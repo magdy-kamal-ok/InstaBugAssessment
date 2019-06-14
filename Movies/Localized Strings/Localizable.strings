@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Movies
+
+  Created by mac on 6/14/19.
+  Copyright © 2019 OwnProjects. All rights reserved.
+*/
+
+"retry" = "Retry";
+"cancel" = "Cancel";
+"alert" = "Alert";
+"ok" = "Ok";
+"myMovies" = "My Movies";
+"allMovies" = "All Movies";
+"emptyTitleMsg" = "Please verfy that title text is not empty, and not only contains spaces and newlines";
+"emptyOverViewMsg" = "Please verfy that OverView text is not empty, and not only contains spaces and newlines";
+"newMovie" = "New Movie";
+"moviesList" = "Movies List";
