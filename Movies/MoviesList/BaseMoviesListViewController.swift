@@ -35,6 +35,7 @@ class BaseMoviesListViewController: UIViewController {
         setupCellNibName()
         setupCellNibRegistration()
         setupAddButtonToNavigation()
+        setAccessiblityIdentifiers()
         
     }
     
@@ -42,10 +43,16 @@ class BaseMoviesListViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    private func setAccessiblityIdentifiers()
+    {
+        self.moviesTableView.accessibilityIdentifier = Constants.TABLEVIEW_IDENTIFIER
+
+    }
     // MARK: right navbar button
     private func setupAddButtonToNavigation() {
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(openAddNewMovie))
-        addBarButton.accessibilityIdentifier = "AddMoview"
+        addBarButton.accessibilityIdentifier = Constants.ADD_NEW_VIDEO_BTN_IDENTIFIER
         navigationItem.rightBarButtonItem = addBarButton
     }
     
@@ -61,6 +68,8 @@ class BaseMoviesListViewController: UIViewController {
     // MARK: Refresh cotrol
     func setupSwipeRefresh() -> Void {
         refreshControl = UIRefreshControl()
+
+        self.refreshControl?.accessibilityIdentifier = Constants.PULL_REFRESH_INDICATOR_IDENTIFIER
         refreshControl?.tintColor = UIColor.gray
         refreshControl?.addTarget(self, action: #selector(swipeRefreshTableView), for: .valueChanged)
         self.moviesTableView.addSubview(refreshControl!)
@@ -85,6 +94,7 @@ class BaseMoviesListViewController: UIViewController {
     
     func showLoadingMoreHeader() -> Void {
         paginationIndicator = UIActivityIndicatorView.init()
+        self.paginationIndicator?.accessibilityIdentifier = Constants.Load_More_INDICATOR_IDENTIFIER
         paginationIndicator?.color = UIColor.gray
         paginationIndicator?.sizeToFit()
         paginationIndicator?.startAnimating()
@@ -237,10 +247,6 @@ extension BaseMoviesListViewController: UITableViewDelegate {
                     self.handlePaginationRequest()
                 }
             }
-//            else
-//            {
-//                endRefreshTableView()
-//            }
         }
     }
 }

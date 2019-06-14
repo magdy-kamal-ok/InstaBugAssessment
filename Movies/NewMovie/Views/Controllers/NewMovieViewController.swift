@@ -32,7 +32,7 @@ class NewMovieViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "newMovie".localized
+        self.title = Constants.NEW_MOVIE_TITLE.localized
 
     }
     
@@ -40,7 +40,7 @@ class NewMovieViewController: UIViewController {
     @IBAction func resetBtnClicked(_ sender: UIButton) {
         
         self.newMovieViewModel.selectedImage = nil
-        self.posterImageView.image = UIImage.init(named: "ic_movie_iphone_placeholder")!
+        self.posterImageView.image = UIImage.init(named: Constants.IMAGE_PLACEHOLDER_NAME)!
         self.movieTitlTextField.text = ""
         self.movieOverViewTextView.text = ""
         resetDateForDatePicker()

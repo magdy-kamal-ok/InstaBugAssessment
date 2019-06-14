@@ -8,7 +8,7 @@
 
 import UIKit
 
-let imageCash = NSCache<AnyObject, AnyObject>()
+fileprivate let imageCache = NSCache<AnyObject, AnyObject>()
 class CustomImageView: UIImageView
 {
     var imageUrlString:String?
@@ -18,9 +18,9 @@ class CustomImageView: UIImageView
         let url = NSURL(string: urlString)
         imageUrlString = urlString
         
-        if let imageFromCash = imageCash.object(forKey: urlString as AnyObject) as? UIImage
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage
         {
-            self.image = imageFromCash
+            self.image = imageFromCache
             return
             
         }
@@ -33,11 +33,11 @@ class CustomImageView: UIImageView
                 return
             }
             DispatchQueue.main.async(execute: {
-                if let imageToCashe = UIImage(data: data!) {
+                if let imageToCache = UIImage(data: data!) {
                     
-                    imageCash.setObject(imageCash, forKey: urlString as AnyObject)
+                    imageCache.setObject(imageCache, forKey: urlString as AnyObject)
                     if self.imageUrlString == urlString {
-                        self.image = imageToCashe
+                        self.image = imageToCache
                         }
                     
                 }

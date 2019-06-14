@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/BaseMoviesListViewController.swift"
-            timestampString = "582160162.88196"
+            timestampString = "582234818.688031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "showLoadingMoreHeader()"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,88 +25,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/CustomComponents/CustomImageView.swift"
-            timestampString = "582171202.609285"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "loadImageUsingUrlString(urlString:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Movies/CustomComponents/CustomImageView.swift"
-            timestampString = "582171202.609372"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "loadImageUsingUrlString(urlString:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Movies/CustomComponents/CustomImageView.swift"
-            timestampString = "582171202.60944"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "loadImageUsingUrlString(urlString:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Movies.CustomImageView.loadImageUsingUrlString(urlString: Swift.String) -&gt; ()"
-                  moduleName = "Movies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/Projects/InstaBug/Movies/Movies/CustomComponents/CustomImageView.swift"
-                  timestampString = "582057330.2919821"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "576">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Movies.CustomImageView.loadImageUsingUrlString(urlString: Swift.String) -&gt; ()"
-                  moduleName = "Movies"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/Projects/InstaBug/Movies/Movies/CustomComponents/CustomImageView.swift"
-                  timestampString = "582057330.295267"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "50">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/MoviesListViewController.swift"
-            timestampString = "582171202.6095099"
+            timestampString = "582234818.6881239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -121,24 +41,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/MoviesList/ViewModels/MoviesViewModel.swift"
-            timestampString = "582171202.609589"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "getSectionsCount()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.609691"
+            timestampString = "582234818.6881959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -154,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.609804"
+            timestampString = "582234818.688266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -170,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.609923"
+            timestampString = "582234818.688329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -186,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.610027"
+            timestampString = "582234818.688392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -201,24 +105,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/MoviesList/ViewModels/MoviesViewModel.swift"
-            timestampString = "582171202.610117"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "requestFailed(error:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.6102"
+            timestampString = "582234818.688455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -234,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.610283"
+            timestampString = "582234818.688517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -250,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.6103669"
+            timestampString = "582234818.68858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -266,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.61045"
+            timestampString = "582234818.688642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -282,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.610534"
+            timestampString = "582234818.6887029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -298,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.610616"
+            timestampString = "582234818.688765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -314,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Movies/MoviesList/Models/Data/Source/Requests/BaseMovieRequest.swift"
-            timestampString = "582171202.6106991"
+            timestampString = "582234818.688825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -329,13 +217,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/MoviesList/ViewModels/MoviesViewModel.swift"
-            timestampString = "582171202.610777"
+            filePath = "MoviesUITests/MoviesListUITests.swift"
+            timestampString = "582234818.68889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "loadMoreMovies()"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "testMoviesListLoaded_Example()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,13 +233,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/MoviesList/ViewModels/MoviesViewModel.swift"
-            timestampString = "582171202.610846"
+            filePath = "MoviesUITests/MoviesListUITests.swift"
+            timestampString = "582234818.689636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "setViewsStates()"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "testOpenNewVideo_Example()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -361,29 +249,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/MoviesList/ViewModels/MoviesViewModel.swift"
-            timestampString = "582171202.610912"
+            filePath = "MoviesUITests/MoviesListUITests.swift"
+            timestampString = "582234818.690205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "loadMoreMovies()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Movies/MoviesList/ViewModels/MoviesViewModel.swift"
-            timestampString = "582171202.6109771"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "requestWillSend()"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "testMoviesListZoomImage_Example()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

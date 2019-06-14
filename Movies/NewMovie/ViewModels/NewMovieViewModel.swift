@@ -41,13 +41,13 @@ class NewMovieViewModel: NSObject {
     
     func validateNewMovieData(movieTitle:String, movieOverView:String)
     {
-        if movieTitle.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+        if movieTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         {
-            self.showAlertMessage(message: "emptyTitleMsg".localized)
+            self.showAlertMessage(with: Constants.EMPTY_TITLE_MSG.localized)
         }
-        else if movieOverView.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+        else if movieOverView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         {
-            self.showAlertMessage(message: "emptyOverViewMsg".localized)
+            self.showAlertMessage(with: Constants.EMPTY_OVERVIEW_MSG.localized)
 
         }
         else
@@ -59,15 +59,15 @@ class NewMovieViewModel: NSObject {
     func addMovieTotheList(movieTitle:String, movieOverView:String)
     {
         let date = self.selectedDate ?? Date()
-        let dateStr = HelperDateFormatter.formatDateAsDashed(date: date)
-        let movieImage = self.selectedImage ?? UIImage.init(named: "ic_movie_iphone_placeholder")!
+        let dateStr = HelperDateFormatter.formatDate(date: date, format: Constants.YEAR_MONTH_DAY_FORMAT)
+        let movieImage = self.selectedImage ?? UIImage.init(named: Constants.IMAGE_PLACEHOLDER_NAME)!
         let movie = Movie.init(title: movieTitle, overview: movieOverView, releaseDate: dateStr, image: movieImage)
         myMoviesArray.add(movie)
     }
-    func showAlertMessage(message:String)
+    func showAlertMessage(with message:String)
     {
-        let alert = UIAlertController(title: "alert".localized, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "ok".localized, style: UIAlertAction.Style.default, handler: nil))
+        let alert = UIAlertController(title: Constants.ALERT.localized, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: Constants.OK.localized, style: UIAlertAction.Style.default, handler: nil))
         delegate?.showAlert(alert: alert)
     }
 }

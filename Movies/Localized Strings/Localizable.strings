@@ -9,10 +9,11 @@
 "retry" = "Retry";
 "cancel" = "Cancel";
 "alert" = "Alert";
+"error" = "ERROR";
 "ok" = "Ok";
 "myMovies" = "My Movies";
 "allMovies" = "All Movies";
-"emptyTitleMsg" = "Please verfy that title text is not empty, and not only contains spaces and newlines";
-"emptyOverViewMsg" = "Please verfy that OverView text is not empty, and not only contains spaces and newlines";
+"emptyTitleMsg" = "Please verfy that title text is not empty, and not only contains white spaces";
+"emptyOverViewMsg" = "Please verfy that OverView text is not empty, and not only contains white spaces";
 "newMovie" = "New Movie";
 "moviesList" = "Movies List";

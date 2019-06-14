@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum ResponseStatus
+enum ResponseStatusEnum
 {
     case success
     case failure
 
 }
 
-enum EncoingStatus:Int
+enum EncodingStatusEnum:Int
 {
     case success = 0
     case failure = 1

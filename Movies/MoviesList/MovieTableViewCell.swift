@@ -16,7 +16,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var overViewLbl: UILabel!
     // MARK: Parameters
     var imageTapGesture = UITapGestureRecognizer()
-    var startingImageView:UIImageView?
+    var zoomImageView:UIImageView?
     var startingFrame:CGRect?
     var blackBackgroundView:UIView?
     
@@ -40,22 +40,30 @@ class MovieTableViewCell: UITableViewCell {
     func configureCell(movie:Movie)
     {
         setCellData(movie: movie)
-        let url = Constants.BaseImageUrl + movie.posterPath
-        self.posterImageView.loadImageUsingUrlString(urlString: url, placeHolderImage: UIImage.init(named: "ic_movie_iphone_placeholder"))
+        let url = Constants.BASE_IMAGE_URL + movie.posterPath
+        self.posterImageView.loadImageUsingUrlString(urlString: url, placeHolderImage: UIImage.init(named: Constants.IMAGE_PLACEHOLDER_NAME))
         
     }
     
     private func setCellData(movie:Movie)
     {
         self.titleLbl.text = movie.title
-        self.dateLbl.text = HelperDateFormatter.formatDate(date: HelperDateFormatter.getDateFromString(dateString: movie.releaseDate))
+        self.titleLbl.decideTextDirection()
+        self.dateLbl.text = HelperDateFormatter.formatDate(date: HelperDateFormatter.getDateFromString(dateString: movie.releaseDate, format: Constants.YEAR_MONTH_DAY_FORMAT), format: Constants.SHORTMONTH_DAY_YEAR_FORMAT)
         self.overViewLbl.text = movie.overview
+        self.overViewLbl.decideTextDirection()
         setImagesControl()
     }
+    private func setImageViewsAccessibility()
+    {
+        self.posterImageView.accessibilityIdentifier = Constants.POSTER_IMAGE_VIEW_IDENTIFIER
+    }
     fileprivate func setImagesControl(){
+       
         self.posterImageView.isUserInteractionEnabled = true
         self.imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleZoomTap(_:)))
         self.posterImageView.addGestureRecognizer(self.imageTapGesture)
+        self.setImageViewsAccessibility()
     }
     
     @objc func handleZoomTap(_ sender: UITapGestureRecognizer)
@@ -68,8 +76,9 @@ class MovieTableViewCell: UITableViewCell {
     }
     func performZoomInForStartingImageView(startingImageView:UIImageView)
     {
-        self.startingImageView = startingImageView
-        
+        self.zoomImageView = startingImageView
+        self.zoomImageView?.accessibilityIdentifier = Constants.ZOOM_POSTER_IMAGE_IDENTIFIER
+
         startingFrame = startingImageView.superview?.convert(startingImageView.frame, to: nil)
         let zoomingImageView = UIImageView(frame: startingFrame!)
         zoomingImageView.image = startingImageView.image

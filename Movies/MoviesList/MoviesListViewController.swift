@@ -23,7 +23,7 @@ class MoviesListViewController: BaseMoviesListViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.moviesTableView.reloadData()
-        self.title = "moviesList".localized
+        self.title = Constants.MOVIES_LIST_TITLE.localized
     }
     // MARK: override required methods needed from parent class
     override func setupCellNibName() {

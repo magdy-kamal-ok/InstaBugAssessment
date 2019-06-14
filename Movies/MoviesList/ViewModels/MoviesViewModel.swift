@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MoviesViewModel.swift
 //  Movies
 //
 //  Created by mac on 6/12/19.
@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+
 
 enum MoviesSection:String {
     case myMovies = "myMovies"
@@ -121,11 +122,11 @@ class MoviesViewModel: NSObject {
     
     func showAlertMessage(message:String)
     {
-        let alert = UIAlertController(title: "alert".localized, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "retry".localized, style: UIAlertAction.Style.default, handler: { (action) in
+        let alert = UIAlertController(title: Constants.ERROR.localized, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: Constants.RETRY.localized, style: UIAlertAction.Style.default, handler: { (action) in
             self.getMoviesData()
         }))
-        alert.addAction(UIAlertAction(title: "cancel".localized, style: UIAlertAction.Style.cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: Constants.CANCEL.localized, style: UIAlertAction.Style.cancel, handler: { (action) in
             self.cancelCoursesDatatRequest()
         }))
        

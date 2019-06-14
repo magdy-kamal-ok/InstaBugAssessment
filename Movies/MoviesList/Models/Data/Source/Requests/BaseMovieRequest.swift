@@ -56,7 +56,7 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     }
 
 
-    func getStatus(_ response: HTTPURLResponse) -> ResponseStatus{
+    func getStatus(_ response: HTTPURLResponse) -> ResponseStatusEnum{
         switch response.statusCode {
             case 200...299: return .success
             default: return .failure
@@ -91,7 +91,7 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
         }
     }
     
-    func setErrorDecodingData(message:String, encodingStatus:EncoingStatus = EncoingStatus.failure)
+    func setErrorDecodingData(message:String, encodingStatus:EncodingStatusEnum = EncodingStatusEnum.failure)
     {
         let error = ErrorModel.init(code: encodingStatus.rawValue, message: message)
         

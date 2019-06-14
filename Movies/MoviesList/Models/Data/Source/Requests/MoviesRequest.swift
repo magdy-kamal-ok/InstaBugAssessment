@@ -27,7 +27,7 @@ class MoviesRequest: BaseMovieRequest<MovieResponseModel, ErrorModel> {
     
     public func getMoviesData(offset:String){
         delegate?.requestWillSend()
-        let apiUrl = Constants.ApiUrl+"\(offset)"
+        let apiUrl = Constants.API_URL+"\(offset)"
         getMoviesRequsetData(from: apiUrl)
     }
     
