@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 enum MoviesSection {
     case myMovies
     case allMovies
@@ -29,11 +28,11 @@ class MoviesViewModel: NSObject {
     //MARK: Parameters
     //
     lazy private var backendManager = MoviesBackendManager()
-    private var currentOffset: Int = 1
+    public private(set) var currentOffset: Int = 1
     public private(set) var listTotalCount: Int = 0
     public private(set) var allMoviesArray: NSMutableArray = []
     public private(set) var isLoadingMore: Bool = false
-    private var isSwipeAndRefresh : Bool = false
+    public private(set) var isSwipeAndRefresh : Bool = false
     weak var movieViewControllerDelegate:MovieViewControllerDelegate?
     public private(set) var moviesSections = [MoviesSection]()
     private var maximumPageNumber = 1000

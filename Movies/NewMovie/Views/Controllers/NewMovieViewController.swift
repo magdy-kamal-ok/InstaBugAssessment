@@ -58,7 +58,6 @@ class NewMovieViewController: UIViewController {
     }
     
     @IBAction func selectImageBtnClicked(_ sender: UIButton) {
-        
         self.openGalleryView()
     }
     

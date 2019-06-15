@@ -35,11 +35,17 @@ class NewMovieViewModel: NSObject {
     // MARK: Create new movie
     func createNewMovie(movieTitle:String, movieOverView:String)
     {
-        self.validateNewMovieData(movieTitle: movieTitle, movieOverView: movieOverView)
-        
+        if self.checkValidation(movieTitle: movieTitle, movieOverView: movieOverView)
+        {
+            addMovieTotheList(movieTitle: movieTitle, movieOverView: movieOverView)
+        }
+        else
+        {
+            self.showValidationAlert(movieTitle: movieTitle, movieOverView: movieOverView)
+        }
     }
     
-    func validateNewMovieData(movieTitle:String, movieOverView:String)
+    private func showValidationAlert(movieTitle:String, movieOverView:String)
     {
         if movieTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         {
@@ -50,13 +56,22 @@ class NewMovieViewModel: NSObject {
             self.showAlertMessage(with: Constants.EMPTY_OVERVIEW_MSG.localized)
 
         }
-        else
-        {
-            addMovieTotheList(movieTitle: movieTitle, movieOverView: movieOverView)
-        }
     }
     
-    func addMovieTotheList(movieTitle:String, movieOverView:String)
+    func checkValidation(movieTitle:String, movieOverView:String)->Bool
+    {
+        if movieTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        {
+            return false
+        }
+        else if movieOverView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        {
+            return false
+            
+        }
+        return true
+    }
+    private func addMovieTotheList(movieTitle:String, movieOverView:String)
     {
         let date = self.selectedDate ?? Date()
         let dateStr = HelperDateFormatter.formatDate(date: date, format: Constants.YEAR_MONTH_DAY_FORMAT)
@@ -64,7 +79,7 @@ class NewMovieViewModel: NSObject {
         let movie = Movie.init(title: movieTitle, overview: movieOverView, releaseDate: dateStr, image: movieImage)
         myMoviesArray.add(movie)
     }
-    func showAlertMessage(with message:String)
+    private func showAlertMessage(with message:String)
     {
         let alert = UIAlertController(title: Constants.ALERT.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: Constants.OK.localized, style: UIAlertAction.Style.default, handler: nil))

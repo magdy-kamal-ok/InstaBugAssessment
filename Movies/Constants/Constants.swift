@@ -16,7 +16,7 @@ class Constants: NSObject {
     public static let API_URL = Constants.BASE_URL + "3/discover/movie?api_key=acea91d2bff1c53e6604e4985b6989e2&page="
     
     // MARK: DateFormats Constants
-    public static let YEAR_MONTH_DAY_FORMAT = "yyyy-mm-dd"
+    public static let YEAR_MONTH_DAY_FORMAT = "yyyy-MM-dd"
     public static let SHORTMONTH_DAY_YEAR_FORMAT = "MMM dd,yyyy"
     
     // MARK: Image name placeholder
