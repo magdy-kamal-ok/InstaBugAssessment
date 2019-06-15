@@ -108,11 +108,7 @@ class MoviesListUITests: XCTestCase {
         XCTAssert(posterImage.exists)
     }
     
-    func testOpenNewVideo_Example() {
-        app.launch()
-        let newBtn = app.buttons[Constants.ADD_NEW_VIDEO_BTN_IDENTIFIER]
-        newBtn.tap()
-    }
+
     
 
 }

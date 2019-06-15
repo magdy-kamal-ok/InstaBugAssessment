@@ -15,6 +15,9 @@ class NewMovieViewController: UIViewController {
     @IBOutlet weak var movieOverViewTextView: UITextView!
     @IBOutlet weak var movieTitlTextField: UITextField!
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var addImageBtn: UIButton!
     
     // MARK: Parameters
     var imagePicker: UIImagePickerController!
@@ -28,6 +31,7 @@ class NewMovieViewController: UIViewController {
         // Do any additional setup after loading the view.
         resetDateForDatePicker()
         setTextOverViewTheme()
+        setAccessibilityIdentifiers()
         newMovieViewModel.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +89,17 @@ extension NewMovieViewController
         movieOverViewTextView.layer.borderColor = borderColor.cgColor
         movieOverViewTextView.layer.cornerRadius = 5.0
     }
+    
+    func setAccessibilityIdentifiers()
+    {
+        movieDatePicker.accessibilityIdentifier = Constants.NEW_MOVIE_PICKER_IDENTIFIER
+        movieTitlTextField.accessibilityIdentifier = Constants.NEW_MOVIE_TITLE_IDENTIFIER
+        movieOverViewTextView.accessibilityIdentifier = Constants.NEW_MOVIE_OVERVIEW_IDENTIFIER
+        addImageBtn.accessibilityIdentifier = Constants.NEW_MOVIE_ADD_BTN_IDENTIFIER
+        doneBtn.accessibilityIdentifier = Constants.NEW_MOVIE_DONE_BTN_IDENTIFIER
+        resetBtn.accessibilityIdentifier = Constants.NEW_MOVIE_RESET_BTN_IDENTIFIER
+        
+    }
 }
 
 // MARK: image picker delegate
@@ -110,4 +125,11 @@ extension NewMovieViewController:NewMovieViewControllerDelegate
     }
     
     
+}
+
+extension NewMovieViewController:UITextFieldDelegate
+{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

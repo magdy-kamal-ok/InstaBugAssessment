@@ -11,10 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewMovieViewController" customModule="Movies" customModuleProvider="target">
             <connections>
+                <outlet property="addImageBtn" destination="OGd-bP-UvH" id="ddZ-sV-YSk"/>
+                <outlet property="doneBtn" destination="GfG-kL-knK" id="7cO-YC-awT"/>
                 <outlet property="movieDatePicker" destination="Tt6-IW-1Ou" id="3wk-IF-yDc"/>
                 <outlet property="movieOverViewTextView" destination="VxD-X7-j64" id="VJV-aK-vOs"/>
                 <outlet property="movieTitlTextField" destination="cCt-wK-IAp" id="Ssg-Uj-NWB"/>
                 <outlet property="posterImageView" destination="r2m-5p-T9J" id="V27-pd-XFn"/>
+                <outlet property="resetBtn" destination="Fnh-tm-ZQ5" id="vAW-fR-R17"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

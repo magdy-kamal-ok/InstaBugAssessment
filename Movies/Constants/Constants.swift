@@ -38,6 +38,8 @@ class Constants: NSObject {
     
     
     // MARK: UITest accessability identifiers
+    
+    // movies list identifiers
     public static let TABLEVIEW_IDENTIFIER = "moviesListTableView"
     public static let ADD_NEW_VIDEO_BTN_IDENTIFIER = "AddMoview"
     public static let Load_More_INDICATOR_IDENTIFIER = "loadMore"
@@ -48,5 +50,14 @@ class Constants: NSObject {
     public static let MOVIE_TITLE_IDENTIFIER = "movieTitle"
     public static let MOVIE_OVERVIEW_IDENTIFIER = "movieOverView"
     public static let MOVIE_DATE_IDENTIFIER = "movieDate"
+    
+    // new movie identifiers
+    public static let NEW_POSTER_IMAGE_VIEW_IDENTIFIER = "newPosterImage"
+    public static let NEW_MOVIE_TITLE_IDENTIFIER = "newMovieTitle"
+    public static let NEW_MOVIE_OVERVIEW_IDENTIFIER = "newMovieOverView"
+    public static let NEW_MOVIE_PICKER_IDENTIFIER = "newMovieDate"
+    public static let NEW_MOVIE_ADD_BTN_IDENTIFIER = "newMovieAddBtn"
+    public static let NEW_MOVIE_DONE_BTN_IDENTIFIER = "newMovieDoneBtn"
+    public static let NEW_MOVIE_RESET_BTN_IDENTIFIER = "newMovieResetBtn"
     
 }
