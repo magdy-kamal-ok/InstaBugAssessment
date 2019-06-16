@@ -60,4 +60,5 @@ class Constants: NSObject {
     public static let NEW_MOVIE_DONE_BTN_IDENTIFIER = "newMovieDoneBtn"
     public static let NEW_MOVIE_RESET_BTN_IDENTIFIER = "newMovieResetBtn"
     
+    public static let IMAGE_TEST_URL = "https://image.tmdb.org/t/p/w500/xqR4ABkFTFYe8NDJi3knwWX7zfn.jpg"
 }

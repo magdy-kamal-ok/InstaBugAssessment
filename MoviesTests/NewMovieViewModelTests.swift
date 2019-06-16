@@ -38,4 +38,5 @@ class NewMovieViewModelTests: XCTestCase {
         XCTAssert(myMoviesArray.count == 1)
     }
 
+
 }

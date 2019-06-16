@@ -41,5 +41,40 @@ class MoviesViewModelTests: XCTestCase {
         XCTAssert(sut.currentOffset == 2)
         XCTAssert(sut.isLoadingMore == true)
     }
+    
+    func testRequestResult()
+    {
+        let queue = DispatchQueue(label: "LoadMovies")
+        queue.sync {
+            sut.getMoviesData()
+        }
+        XCTAssertEqual(sut.allMoviesArray.count, 20, "Didn't parse 3 items from fake response")
+    }
+    
+    func testPhotoDownloaded_ImageOrientation()
+    {
+        let expectedImageOrientation = UIImage.init(named: "testImage")?.imageOrientation
+        guard let url = URL(string: Constants.IMAGE_TEST_URL) else {
+            XCTFail()
+            return
+        }
+        let sessionExpectation = expectation(description: "session")
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error
+            {
+                XCTFail(error.localizedDescription)
+            }
+            if let data = data{
+                guard let image = UIImage(data: data) else {
+                    XCTFail()
+                    return
+                }
+                sessionExpectation.fulfill()
+                XCTAssertEqual(image.imageOrientation, expectedImageOrientation)
+            }
+        }.resume()
+        
+        waitForExpectations(timeout: 15, handler: nil)
+    }
 
 }
