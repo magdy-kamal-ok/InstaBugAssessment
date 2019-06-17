@@ -109,7 +109,7 @@ class MoviesListUITests: XCTestCase {
     }
     
     // please make sure you turn off mobile data and wifi
-    func testNointernetConnectionAlert()
+    func testNoInternetConnectionAlert()
     {
         app.launch()
         let alert = app.alerts.firstMatch
