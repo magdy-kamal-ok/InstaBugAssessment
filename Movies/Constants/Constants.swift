@@ -30,6 +30,7 @@ class Constants: NSObject {
     public static let RETRY = "retry"
     public static let ALERT = "alert"
     public static let ERROR = "error"
+    public static let WRANING = "warning"
     public static let OK = "ok"
     public static let EMPTY_TITLE_MSG = "emptyTitleMsg"
     public static let EMPTY_OVERVIEW_MSG = "emptyOverViewMsg"

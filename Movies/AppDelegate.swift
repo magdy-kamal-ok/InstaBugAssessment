@@ -49,6 +49,7 @@ extension AppDelegate
 {
     func openMoviesViewController()
     {
+        
         let moviesListViewController  = MoviesListViewController(nibName: "MoviesListViewController", bundle: nil)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navigationBar = UINavigationController.init(rootViewController: moviesListViewController)

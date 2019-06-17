@@ -92,8 +92,11 @@ class MoviesListViewController: BaseMoviesListViewController {
         
     }
     override func handleOpenAddNewMoview() {
-        let newMovieViewController = NewMovieViewController.init(nibName: "NewMovieViewController", bundle: nil)
-        self.navigationController?.pushViewController(newMovieViewController, animated: true)
+        DispatchQueue.main.async {
+            let newMovieViewController = NewMovieViewController.init(nibName: "NewMovieViewController", bundle: nil)
+            self.navigationController?.pushViewController(newMovieViewController, animated: true)
+        }
+
     }
 }
 extension MoviesListViewController:MovieViewControllerDelegate

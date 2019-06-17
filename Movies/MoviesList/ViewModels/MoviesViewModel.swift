@@ -58,8 +58,6 @@ class MoviesViewModel: NSObject {
         }
         else
         {
-            self.stopAllLoaders()
-            self.cancelMoviesDatatRequest()
             self.showNoInternetConnection()
         }
     }
@@ -137,15 +135,17 @@ class MoviesViewModel: NSObject {
         alert.addAction(UIAlertAction(title: Constants.CANCEL.localized, style: UIAlertAction.Style.cancel, handler: { (action) in
             self.cancelMoviesDatatRequest()
         }))
-       
+        
         movieViewControllerDelegate?.showAlert(alert: alert)
     }
     
     private func showNoInternetConnection()
     
     {
-        let alert = UIAlertController(title: Constants.ERROR.localized, message: Constants.INTERNET_CONNECTION.localized, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: Constants.OK.localized, style: UIAlertAction.Style.default, handler: nil))
+        let alert = UIAlertController(title: Constants.WRANING.localized, message: Constants.INTERNET_CONNECTION.localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: Constants.OK.localized, style: UIAlertAction.Style.default, handler: { (action) in
+                self.stopAllLoaders()
+        }))
         
         movieViewControllerDelegate?.showAlert(alert: alert)
     }

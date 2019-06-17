@@ -10,6 +10,7 @@
 "cancel" = "Cancel";
 "alert" = "Alert";
 "error" = "ERROR";
+"warning" = "Warning";
 "ok" = "Ok";
 "myMovies" = "My Movies";
 "allMovies" = "All Movies";
