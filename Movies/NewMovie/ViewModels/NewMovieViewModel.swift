@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: gloabal array that contains my local movies saved per session
 var myMoviesArray: NSMutableArray = []
 
 protocol NewMovieViewControllerDelegate: NSObjectProtocol {
@@ -44,7 +45,7 @@ class NewMovieViewModel: NSObject {
             self.showValidationAlert(movieTitle: movieTitle, movieOverView: movieOverView)
         }
     }
-    
+
     private func showValidationAlert(movieTitle:String, movieOverView:String)
     {
         if movieTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty

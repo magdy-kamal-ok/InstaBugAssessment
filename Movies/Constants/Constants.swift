@@ -15,6 +15,8 @@ class Constants: NSObject {
     public static let BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     public static let API_URL = Constants.BASE_URL + "3/discover/movie?api_key=acea91d2bff1c53e6604e4985b6989e2&page="
     
+    // MARK: Maximun Pages Count
+    public static let MAXIMUM_PAGE_COUNT = 1000
     // MARK: DateFormats Constants
     public static let YEAR_MONTH_DAY_FORMAT = "yyyy-MM-dd"
     public static let SHORTMONTH_DAY_YEAR_FORMAT = "MMM dd,yyyy"
@@ -35,6 +37,7 @@ class Constants: NSObject {
     public static let MOVIES_LIST_TITLE = "moviesList"
     public static let MY_MOVIES = "myMovies"
     public static let ALL_MOVIES = "allMovies"
+    public static let INTERNET_CONNECTION = "networkConnectionMsg"
     
     
     // MARK: UITest accessability identifiers

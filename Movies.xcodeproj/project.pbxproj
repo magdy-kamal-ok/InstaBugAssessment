@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0420AA4E22B7D585001D0A15 /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420AA4D22B7D585001D0A15 /* ReachabilityHelper.swift */; };
+		0420AA4F22B7D585001D0A15 /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420AA4D22B7D585001D0A15 /* ReachabilityHelper.swift */; };
+		0420AA5022B7D585001D0A15 /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420AA4D22B7D585001D0A15 /* ReachabilityHelper.swift */; };
+		0420AA5222B7FB01001D0A15 /* LabelExtentionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420AA5122B7FB01001D0A15 /* LabelExtentionTests.swift */; };
+		0427687122B5D19100BE04E1 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 0427687022B5D19100BE04E1 /* movies.json */; };
 		0429084D22B2BC7D006E62A6 /* ResposeResultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429084C22B2BC7D006E62A6 /* ResposeResultStatus.swift */; };
 		0429084F22B2E612006E62A6 /* HelperDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429084E22B2E612006E62A6 /* HelperDateFormatter.swift */; };
 		0429085222B3374E006E62A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0429085122B3374E006E62A6 /* Localizable.strings */; };
@@ -107,6 +112,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0420AA4D22B7D585001D0A15 /* ReachabilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
+		0420AA5122B7FB01001D0A15 /* LabelExtentionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtentionTests.swift; sourceTree = "<group>"; };
+		0427687022B5D19100BE04E1 /* movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		0429084C22B2BC7D006E62A6 /* ResposeResultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResposeResultStatus.swift; sourceTree = "<group>"; };
 		0429084E22B2E612006E62A6 /* HelperDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDateFormatter.swift; sourceTree = "<group>"; };
 		0429085122B3374E006E62A6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -175,6 +183,7 @@
 			children = (
 				0429084C22B2BC7D006E62A6 /* ResposeResultStatus.swift */,
 				0429084E22B2E612006E62A6 /* HelperDateFormatter.swift */,
+				0420AA4D22B7D585001D0A15 /* ReachabilityHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -236,9 +245,11 @@
 		0469EB1B22B1175D007C6357 /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				0427687022B5D19100BE04E1 /* movies.json */,
 				042AD6D122B552C00049145B /* MoviesHelperDateFormatterTests.swift */,
 				042AD6D322B563660049145B /* NewMovieViewModelTests.swift */,
 				042AD6D522B56EF10049145B /* MoviesViewModelTests.swift */,
+				0420AA5122B7FB01001D0A15 /* LabelExtentionTests.swift */,
 				0469EB1E22B1175D007C6357 /* Info.plist */,
 			);
 			path = MoviesTests;
@@ -606,6 +617,7 @@
 				042AD6CD22B552810049145B /* MoviesListViewController.xib in Resources */,
 				042AD6CE22B552810049145B /* MovieTableViewCell.xib in Resources */,
 				042AD6CF22B552810049145B /* Assets.xcassets in Resources */,
+				0427687122B5D19100BE04E1 /* movies.json in Resources */,
 				042AD6D022B552810049145B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,6 +648,7 @@
 				04293DF122B3CAD700369D07 /* UILabelExtension.swift in Sources */,
 				0469EB4D22B12085007C6357 /* CustomImageView.swift in Sources */,
 				0469EB5822B12985007C6357 /* MovieTableViewCell.swift in Sources */,
+				0420AA4E22B7D585001D0A15 /* ReachabilityHelper.swift in Sources */,
 				0469EB5522B12882007C6357 /* MovieModel.swift in Sources */,
 				0469EB4422B118C2007C6357 /* MoviesListViewController.swift in Sources */,
 				0429084F22B2E612006E62A6 /* HelperDateFormatter.swift in Sources */,
@@ -658,6 +671,7 @@
 			files = (
 				042AD6B822B5526A0049145B /* ResposeResultStatus.swift in Sources */,
 				042AD6B922B5526A0049145B /* HelperDateFormatter.swift in Sources */,
+				0420AA4F22B7D585001D0A15 /* ReachabilityHelper.swift in Sources */,
 				042AD6BA22B5526A0049145B /* Constants.swift in Sources */,
 				042AD6BB22B5526A0049145B /* CustomImageView.swift in Sources */,
 				042AD6BC22B5526A0049145B /* UILabelExtension.swift in Sources */,
@@ -674,6 +688,7 @@
 				042AD6C522B5526A0049145B /* MoviesRequest.swift in Sources */,
 				042AD6C622B5526A0049145B /* MoviesViewModel.swift in Sources */,
 				042AD6C722B5526A0049145B /* BaseMoviesListViewController.swift in Sources */,
+				0420AA5222B7FB01001D0A15 /* LabelExtentionTests.swift in Sources */,
 				042AD6C822B5526A0049145B /* MoviesListViewController.swift in Sources */,
 				042AD6C922B5526A0049145B /* MovieTableViewCell.swift in Sources */,
 				042AD6CA22B5526A0049145B /* AppDelegate.swift in Sources */,
@@ -701,6 +716,7 @@
 				04293DFF22B40DA600369D07 /* MoviesRequest.swift in Sources */,
 				04293E0022B40DA600369D07 /* MoviesViewModel.swift in Sources */,
 				04293E0122B40DA600369D07 /* BaseMoviesListViewController.swift in Sources */,
+				0420AA5022B7D585001D0A15 /* ReachabilityHelper.swift in Sources */,
 				04293E0222B40DA600369D07 /* MoviesListViewController.swift in Sources */,
 				04293E0322B40DA600369D07 /* MovieTableViewCell.swift in Sources */,
 				04293E0422B40DA600369D07 /* AppDelegate.swift in Sources */,

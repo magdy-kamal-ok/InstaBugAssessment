@@ -35,7 +35,7 @@ class MoviesViewModel: NSObject {
     public private(set) var isSwipeAndRefresh : Bool = false
     weak var movieViewControllerDelegate:MovieViewControllerDelegate?
     public private(set) var moviesSections = [MoviesSection]()
-    private var maximumPageNumber = 1000
+    private var maximumPageNumber = Constants.MAXIMUM_PAGE_COUNT
     //
     // MARK: Initializer
     //
@@ -51,14 +51,23 @@ class MoviesViewModel: NSObject {
     //MARK: Network Request
     //
     public func getMoviesData() {
-        let requiredOffset = String(self.currentOffset)
-        backendManager.getMovies(delegate: self, offset: requiredOffset)
+        if Reachability.isConnectedToNetwork()
+        {
+            let requiredOffset = String(self.currentOffset)
+            backendManager.getMovies(delegate: self, offset: requiredOffset)
+        }
+        else
+        {
+            self.stopAllLoaders()
+            self.cancelMoviesDatatRequest()
+            self.showNoInternetConnection()
+        }
     }
     //
     // MARK: Cancel Network Request
     //
     
-    func cancelCoursesDatatRequest() {
+    func cancelMoviesDatatRequest() {
         backendManager.cancelMoviesDatatRequest()
     }
     
@@ -119,27 +128,48 @@ class MoviesViewModel: NSObject {
         movieViewControllerDelegate?.refreshMoviesFinished()
     }
     
-    func showAlertMessage(message:String)
+    private func showAlertMessage(message:String)
     {
         let alert = UIAlertController(title: Constants.ERROR.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: Constants.RETRY.localized, style: UIAlertAction.Style.default, handler: { (action) in
             self.getMoviesData()
         }))
         alert.addAction(UIAlertAction(title: Constants.CANCEL.localized, style: UIAlertAction.Style.cancel, handler: { (action) in
-            self.cancelCoursesDatatRequest()
+            self.cancelMoviesDatatRequest()
         }))
        
         movieViewControllerDelegate?.showAlert(alert: alert)
     }
+    
+    private func showNoInternetConnection()
+    
+    {
+        let alert = UIAlertController(title: Constants.ERROR.localized, message: Constants.INTERNET_CONNECTION.localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: Constants.OK.localized, style: UIAlertAction.Style.default, handler: nil))
+        
+        movieViewControllerDelegate?.showAlert(alert: alert)
+    }
+    
+    private func stopAllLoaders()
+    {
+        movieViewControllerDelegate?.showLoader(flag: false)
+        self.stopRefreshing()
+        self.stopLoadingMore()
+    }
+    
 }
+// MARK: movies request delegate
+
 extension MoviesViewModel:MovieRequestDelegate
 {
     
     func requestWillSend() {
+        
         if !self.isLoadingMore && !self.isSwipeAndRefresh
         {
             movieViewControllerDelegate?.showLoader(flag: true)
         }
+       
     }
     
     func requestSucceeded(data: MovieResponseModel?) {
@@ -152,7 +182,6 @@ extension MoviesViewModel:MovieRequestDelegate
         if let moviesResponse = data
         {
             self.listTotalCount = moviesResponse.numberOfResults
-            
             self.allMoviesArray.addObjects(from: moviesResponse.movies)
         }
         setViewsStates()

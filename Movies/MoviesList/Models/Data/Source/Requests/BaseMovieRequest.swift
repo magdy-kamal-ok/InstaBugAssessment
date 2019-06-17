@@ -10,7 +10,7 @@ import Foundation
 
 public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     
-    let defaultSession = URLSession(configuration: .default)
+    var defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
     var isForcingCancel = false
 
@@ -23,6 +23,7 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     
         if var urlComponents = URLComponents(string: url) {
             guard let url = urlComponents.url else { return }
+
             dataTask = defaultSession.dataTask(with: url) { [weak self] data, response, error in
                 defer { self?.dataTask = nil }
                 if let error = error,  let response = response as? HTTPURLResponse
@@ -111,11 +112,11 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
     }
     
     func onRequestSuccess(data: R?) {
-        preconditionFailure("Override onRequestSuccess func -> BaseLoginRequest")
+        preconditionFailure("Override onRequestSuccess func -> BaseMovieRequest")
     }
     
     func onRequestFail(error: E?) {
-        preconditionFailure("Override onRequestFail func -> BaseLoginRequest")
+        preconditionFailure("Override onRequestFail func -> BaseMovieRequest")
     }
     
     func cancelRequest() {
@@ -123,3 +124,4 @@ public class BaseMovieRequest<R: Decodable, E: Decodable>: NSObject {
         isForcingCancel = true
     }
 }
+

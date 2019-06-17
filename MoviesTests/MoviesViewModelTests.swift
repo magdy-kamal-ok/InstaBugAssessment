@@ -42,13 +42,19 @@ class MoviesViewModelTests: XCTestCase {
         XCTAssert(sut.isLoadingMore == true)
     }
     
-    func testRequestResult()
+    func testDecodingMoviesRepsponse()
     {
-        let queue = DispatchQueue(label: "LoadMovies")
-        queue.sync {
-            sut.getMoviesData()
+        let moviesBundle = Bundle(for: type(of: self))
+        let path = moviesBundle.path(forResource: "movies", ofType: "json")
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .alwaysMapped)
+        do
+        {
+            let response = try JSONDecoder().decode(MovieResponseModel.self, from: data!)
+            XCTAssert(response.movies.count==20)
         }
-        XCTAssertEqual(sut.allMoviesArray.count, 20, "Didn't parse 3 items from fake response")
+        catch{
+            XCTFail()
+        }
     }
     
     func testPhotoDownloaded_ImageOrientation()

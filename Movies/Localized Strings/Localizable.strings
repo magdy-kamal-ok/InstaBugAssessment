@@ -15,5 +15,6 @@
 "allMovies" = "All Movies";
 "emptyTitleMsg" = "Please verfy that title text is not empty, and not only contains white spaces";
 "emptyOverViewMsg" = "Please verfy that OverView text is not empty, and not only contains white spaces";
+"networkConnectionMsg" = "Please verfy that you are connected to Wifi or Cellular";
 "newMovie" = "New Movie";
 "moviesList" = "Movies List";
